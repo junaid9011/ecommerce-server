@@ -1,7 +1,14 @@
 const express=require('express');
 const cors=require('cors');
-const errorMiddleware=require('./Middleware/Error')
 const app=express();
+const corsOptions ={
+    origin:'https://ecommerce-x5.netlify.app', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+const errorMiddleware=require('./Middleware/Error')
+
 const bodyParser=require('body-parser')
 const dotenv=require('dotenv');
 const cookieParser = require('cookie-parser');
@@ -9,14 +16,10 @@ const cookieParser = require('cookie-parser');
 // const fileUpload =require('express-fileupload')
 
 app.use(express.json());
-app.use(cookieParser());
-const corsOptions ={
-    origin:'https://ecommerce-x5.netlify.app', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(cookieParser());
+
+
 // app.use(fileUpload());
 
 
