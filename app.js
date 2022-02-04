@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser');
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions ={
-    origin:'https://ecommerce-x5.herokuapp.com/', 
+    origin:'https://ecommerce-x5.netlify.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
