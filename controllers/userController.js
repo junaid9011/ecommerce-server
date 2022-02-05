@@ -4,8 +4,8 @@ const ErrorHandler= require('../Utlis/ErrorHandler');
 const asyncError = require('../Middleware/asyncError');
 const sendToken = require('../Utlis/jwtToken')
 const sendEmail = require('../Utlis/sendEmail');
-const { send } = require('express/lib/response');
-const cloudinary=require('cloudinary')
+// const { send } = require('express/lib/response');
+// const cloudinary=require('cloudinary')
 //Register a user =>/api/v1/register
 exports.register = asyncError(async(req, res, next)=>{
     //config cloudinary
