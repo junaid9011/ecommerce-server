@@ -13,7 +13,7 @@ exports.newProduct=  asyncError( async(req,res,next)=>{
 })
 //get all products=> /api/v1/products
 exports.getProducts= asyncError( async(req,res,next)=>{
-    const resPerPage=4;// number of item show in one page
+    const resPerPage=20;// number of item show in one page
     const productCount= await Product.countDocuments(); //it will use in front-end to count all the docoment
 
     const apiFeatures= new APIFeatures(Product.find(),req.query).search().filter().pagination(resPerPage);
