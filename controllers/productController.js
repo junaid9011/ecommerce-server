@@ -16,7 +16,7 @@ exports.getProducts= asyncError( async(req,res,next)=>{
     const resPerPage=4;// number of item show in one page
     const productCount= await Product.countDocuments(); //it will use in front-end to count all the docoment
 
-    const apiFeatures= new APIFeatures(Product.find(),req.query).search().filter()/*.pagination(resPerPage);*/
+    const apiFeatures= new APIFeatures(Product.find(),req.query).search().filter().pagination(resPerPage);
 
     const allProducts=await apiFeatures.query;
     // const allProducts=await Product.find() //without search facilites
@@ -24,7 +24,8 @@ exports.getProducts= asyncError( async(req,res,next)=>{
         success:true,
         count:allProducts.length,
         allProducts,
-        productCount 
+        productCount,
+        resPerPage
     });
 } )
 
