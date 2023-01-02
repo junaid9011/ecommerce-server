@@ -5,24 +5,14 @@ const jwt = require('jsonwebtoken');
 // const { getCookie } = require('../../front-end/src/Redux/Cookie');
 //check user is authenticated or not
 exports.isAuthenticatedUser = asyncError(async(req,res,next)=>{
-    //import token from cookie
-    // const getCookie = (key) => {
-    //     let name = key + "=";
-    //     let ca = document.cookie.split(';');
-    //     for (let i = 0; i < ca.length; i++) {
-    //         let c = ca[i];
-    //         while (c.charAt(0) === ' ') {
-    //             c = c.substring(1);
-    //         }
-    //         if (c.indexOf(name) === 0) {
-    //             return c.substring(name.length, c.length);
-    //         }
-    //     }
-    //     return "";
-    // }
-    // getCookie('token')
+    let token;
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        token = req.headers.authorization.split(' ')[1];
+    } else if (req.cookies.token) {
+        token = req.cookies.token;
+    }
 
-    const {token}=req.cookies;
+    
     
     // console.log(req.cookies);
     if (!token){

@@ -14,6 +14,7 @@ exports.newOrder = asyncError(async(req,res,next)=>{
         totalPrice,
     paymentInfo,
 }=req.body;
+// console.log(req.user)
     const createOrder=await Order.create({
         orderItems,
         shippingInfo,
@@ -23,8 +24,9 @@ exports.newOrder = asyncError(async(req,res,next)=>{
         totalPrice,
         paymentInfo,
         paidAt:Date.now(),
-        // user:req.user._id
+        user:req.user._id
     })
+    // console.log(createOrder)
     res.status(200).json({
         success: true,
         createOrder
