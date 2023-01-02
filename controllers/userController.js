@@ -95,11 +95,11 @@ exports.forgotPassword = asyncError(async(req, res,next)=>{
 
 //get current logged in user details
 exports.getUserProfile= asyncError(async(req, res, next)=>{
-    const LoggenInUser= await User.findById(req.user.id)
+    const user= await User.findById(req.user.id)
 
     res.status(200).json({
         success:true,
-        LoggenInUser
+        user
 
     })
 })
